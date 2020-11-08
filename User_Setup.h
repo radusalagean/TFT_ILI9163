@@ -13,13 +13,13 @@
 
 // ###### EDIT THE PIN NUMBERS IN THE 3 LINES FOLLOWING TO SUIT YOUR SETUP ######
 
-//#define TFT_CS  9  // Chip select control pin
-//#define TFT_DC  8  // Data Command (A0) control pin
-//#define TFT_RST 7  // Reset pin (could connect to Arduino RESET pin)
+#define TFT_CS  6  // Chip select control pin
+#define TFT_DC  5  // Data Command (A0) control pin
+#define TFT_RST 4  // Reset pin (could connect to Arduino RESET pin)
 
-#define TFT_CS  47  // Chip select control pin
-#define TFT_DC  48  // Data Command control pin
-#define TFT_RST 44  // Reset pin (could connect to Arduino RESET pin)
+// #define TFT_CS  47  // Chip select control pin
+// #define TFT_DC  48  // Data Command control pin
+// #define TFT_RST 44  // Reset pin (could connect to Arduino RESET pin)
 
 // ##################################################################################
 //
@@ -33,11 +33,11 @@
 // If all fonts are loaded the extra FLASH space required is about 17000 bytes...
 // To save FLASH space only enable the fonts you need!
 
-#define LOAD_GLCD   // Font 1. Original Adafruit 8 pixel font needs ~1820 bytes in FLASH
+// #define LOAD_GLCD   // Font 1. Original Adafruit 8 pixel font needs ~1820 bytes in FLASH
 #define LOAD_FONT2  // Font 2. Small 16 pixel high font, needs ~3534 bytes in FLASH, 96 characters
-#define LOAD_FONT4  // Font 4. Medium 26 pixel high font, needs ~5848 bytes in FLASH, 96 characters
-#define LOAD_FONT6  // Font 6. Large 48 pixel font, needs ~2666 bytes in FLASH, only characters 1234567890:-.apm
-#define LOAD_FONT7  // Font 7. 7 segment 48 pixel font, needs ~2438 bytes in FLASH, only characters 1234567890:.
+// #define LOAD_FONT4  // Font 4. Medium 26 pixel high font, needs ~5848 bytes in FLASH, 96 characters
+// #define LOAD_FONT6  // Font 6. Large 48 pixel font, needs ~2666 bytes in FLASH, only characters 1234567890:-.apm
+// #define LOAD_FONT7  // Font 7. 7 segment 48 pixel font, needs ~2438 bytes in FLASH, only characters 1234567890:.
 //#define LOAD_FONT8  // Font 8. Large 75 pixel font needs ~3256 bytes in FLASH, only characters 1234567890:-.
 
 
@@ -51,7 +51,7 @@
 // This speeds up other funtions such as triangle outline drawing too
 // Code size penalty is about 72 bytes
 
-#define FAST_LINE
+// #define FAST_LINE
 
 // Comment out the following #define to stop boundary checking and clipping
 // for fillRectangle()and fastH/V lines. This speeds up other funtions such as text
@@ -66,5 +66,5 @@
 // run slightly faster, so leave it commented out unless you need it!
 // Transaction support is needed to work with SD libraru but not needed with TFT_SdFat
 
-// #define SUPPORT_TRANSACTIONS
+#define SUPPORT_TRANSACTIONS
 
