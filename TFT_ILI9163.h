@@ -293,10 +293,12 @@ class TFT_ILI9163 : public Print {
   int16_t  drawChar(unsigned int uniCode, int x, int y, int font),
            drawNumber(long long_num,int poX, int poY, int font),
            drawFloat(float floatNumber,int decimal,int poX, int poY, int font),
+           drawFloatWithDatum(float floatNumber, int decimal, int poX, int poY, int font, byte datum),
 
            drawString(char *string, int poX, int poY, int font),
            drawCentreString(char *string, int dX, int poY, int font),
            drawRightString(char *string, int dX, int poY, int font),
+           drawStringWithDatum(char *string, int poX, int poY, int font, byte datum),
 
            height(void),
            width(void),

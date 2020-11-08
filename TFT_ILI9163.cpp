@@ -2055,6 +2055,20 @@ int TFT_ILI9163::drawRightString(char *string, int dX, int poY, int font)
 }
 
 /***************************************************************************************
+** Function name:           drawStringWithDatum
+** Descriptions:            draw string with custom datum
+***************************************************************************************/
+int TFT_ILI9163::drawStringWithDatum(char *string, int dX, int poY, int font, byte datum)
+{
+  byte tempdatum = textdatum;
+  int sumX = 0;
+  textdatum = datum;
+  sumX = drawString(string, dX, poY, font);
+  textdatum = tempdatum;
+  return sumX;
+}
+
+/***************************************************************************************
 ** Function name:           drawNumber
 ** Description:             draw a long integer
 ***************************************************************************************/
@@ -2132,6 +2146,20 @@ int TFT_ILI9163::drawFloat(float floatNumber, int dp, int poX, int poY, int font
   
   // Finally we can plot the string and return pixel length
   return drawString(str, poX, poY, font);
+}
+
+/***************************************************************************************
+** Function name:           drawFloatWithDatum
+** Descriptions:            draw float with custom datum
+***************************************************************************************/
+int TFT_ILI9163::drawFloatWithDatum(float floatNumber, int decimal, int poX, int poY, int font, byte datum)
+{
+  byte tempdatum = textdatum;
+  int sumX = 0;
+  textdatum = datum;
+  sumX = drawFloat(floatNumber, decimal, poX, poY, font);
+  textdatum = tempdatum;
+  return sumX;
 }
 
 /***************************************************************************************
