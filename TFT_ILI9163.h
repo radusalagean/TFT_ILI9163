@@ -251,6 +251,7 @@ class TFT_ILI9163 : public Print {
 
            drawRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color),
            fillRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color),
+           fillRectExclusive(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color),
            drawRoundRect(int16_t x0, int16_t y0, int16_t w, int16_t h, int16_t radius, uint16_t color),
            fillRoundRect(int16_t x0, int16_t y0, int16_t w, int16_t h, int16_t radius, uint16_t color),
 

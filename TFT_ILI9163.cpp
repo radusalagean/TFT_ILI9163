@@ -1528,6 +1528,15 @@ void TFT_ILI9163::fillRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t 
 }
 
 /***************************************************************************************
+** Function name:           fillRectExclusive
+** Description:             draw a filled rectangle (exclusive coordinates)
+***************************************************************************************/
+void TFT_ILI9163::fillRectExclusive(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color)
+{
+  fillRect(x + 1, y + 1, w - 1, h - 1, color);
+}
+
+/***************************************************************************************
 ** Function name:           color565
 ** Description:             convert three 8 bit RGB levels to a 16 bit colour value
 ***************************************************************************************/
