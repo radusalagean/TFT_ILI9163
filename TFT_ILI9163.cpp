@@ -2058,12 +2058,12 @@ int TFT_ILI9163::drawRightString(char *string, int dX, int poY, int font)
 ** Function name:           drawStringWithDatum
 ** Descriptions:            draw string with custom datum
 ***************************************************************************************/
-int TFT_ILI9163::drawStringWithDatum(char *string, int dX, int poY, int font, byte datum)
+int TFT_ILI9163::drawStringWithDatum(char *string, int poX, int poY, int font, byte datum)
 {
   byte tempdatum = textdatum;
   int sumX = 0;
   textdatum = datum;
-  sumX = drawString(string, dX, poY, font);
+  sumX = drawString(string, poX, poY, font);
   textdatum = tempdatum;
   return sumX;
 }
