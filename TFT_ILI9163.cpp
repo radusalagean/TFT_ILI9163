@@ -1718,6 +1718,9 @@ int TFT_ILI9163::drawChar(unsigned int uniCode, int x, int y, int font)
   }
 #endif
 
+  if (flash_address == 0)
+    return 0;
+
   int w = width;
   int pX      = 0;
   int pY      = y;
