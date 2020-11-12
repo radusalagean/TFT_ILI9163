@@ -1732,7 +1732,7 @@ int TFT_ILI9163::drawChar(unsigned int uniCode, int x, int y, int font)
   if (font == 2) {
     w = w + 6; // Should be + 7 but we need to compensate for width increment
     w = w / 8;
-    if (x + width * textsize >= _width) return width * textsize ;
+    if (x + ((width * textsize) - 1) >= _width) return width * textsize;
 
     if (textcolor == textbgcolor || textsize != 1) {
 
@@ -1776,11 +1776,12 @@ int TFT_ILI9163::drawChar(unsigned int uniCode, int x, int y, int font)
     {
       spi_begin();
       TFT_CS_L;
-      setWindow(x, y, (x + w * 8) - 1, y + height - 1);
+      setWindow(x, y, (x + width) - 1, y + height - 1);
 
       byte mask;
       for (int i = 0; i < height; i++)
       {
+        uint8_t remainingPx = width;
         for (int k = 0; k < w; k++)
         {
           line = pgm_read_byte(flash_address + w * i + k);
@@ -1799,7 +1800,8 @@ int TFT_ILI9163::drawChar(unsigned int uniCode, int x, int y, int font)
               while (!(SPSR & _BV(SPIF)));
               SPDR = bl;
             }
-            mask = mask >> 1;
+            remainingPx--;
+            if (!remainingPx) mask = 0; else mask = mask >> 1;
           }
         }
         pY += textsize;
