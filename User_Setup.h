@@ -66,5 +66,5 @@
 // run slightly faster, so leave it commented out unless you need it!
 // Transaction support is needed to work with SD libraru but not needed with TFT_SdFat
 
-#define SUPPORT_TRANSACTIONS
+// #define SUPPORT_TRANSACTIONS
 
