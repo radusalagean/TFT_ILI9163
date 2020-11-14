@@ -95,6 +95,13 @@ PROGMEM const unsigned char chr_f16_20[16] =         // 1 unsigned char per row
 //         0x00, 0x00, 0x00, 0x00, 0x00                                         // row 12 - 16
 // };
 
+// Custom character (Plus Minus)
+PROGMEM const unsigned char chr_f16_2B[16] =         // 1 unsigned char per row
+{
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x20, 0xF8, 0x20, 0x20,    // row 1 - 11
+        0x00, 0xF8, 0x00, 0x00, 0x00                                         // row 12 - 16
+};
+
 // PROGMEM const unsigned char chr_f16_2C[16] =         // 1 unsigned char per row
 // {
 //         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,    // row 1 - 11
@@ -107,11 +114,11 @@ PROGMEM const unsigned char chr_f16_20[16] =         // 1 unsigned char per row
 //         0x00, 0x00, 0x00, 0x00, 0x00                                         // row 12 - 16
 // };
 
-// PROGMEM const unsigned char chr_f16_2E[16] =         // 1 unsigned char per row
-// {
-//         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,    // row 1 - 11
-//         0xC0, 0xC0, 0x00, 0x00, 0x00                                         // row 12 - 16
-// };
+PROGMEM const unsigned char chr_f16_2E[16] =         // 1 unsigned char per row
+{
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,    // row 1 - 11
+        0xC0, 0xC0, 0x00, 0x00, 0x00                                         // row 12 - 16
+};
 
 // PROGMEM const unsigned char chr_f16_2F[16] =         // 1 unsigned char per row
 // {
@@ -599,7 +606,7 @@ PROGMEM const unsigned char chr_f16_5A[16] =         // 1 unsigned char per row
 PROGMEM const unsigned char* const chrtbl_f16[96] =       // character pointer table
 {
         chr_f16_20, 0, 0, 0, 0, 0, 0, 0, 
-        0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, chr_f16_2B, 0, 0, chr_f16_2E, 0, 
         chr_f16_30, chr_f16_31, chr_f16_32, chr_f16_33, chr_f16_34, chr_f16_35, chr_f16_36, chr_f16_37, 
         chr_f16_38, chr_f16_39, 0, 0, 0, 0, 0, 0,
         0, chr_f16_41, chr_f16_42, chr_f16_43, chr_f16_44, chr_f16_45, chr_f16_46, chr_f16_47, 
