@@ -58,7 +58,7 @@
 // rendering where size>1. Sketch then must not draw graphics/text outside screen
 // boundary. Code saving for no bounds check (i.e. commented out) is 316 bytes
 
-//#define CLIP_CHECK
+#define CLIP_CHECK
 
 // Comment out the following #define if "SPI Transactions" do not need to be
 // supported. Tranaction support is required if other SPI devices use interrupts.
