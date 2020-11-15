@@ -2000,10 +2000,10 @@ int TFT_ILI9163::drawString(char *string, int poX, int poY, int font)
         fillRect(padXc,poY,padX-sumX,cheight, textbgcolor);
         break;
       case 2:
-        fillRect(padXc,poY,(padX-sumX)>>1,cheight, textbgcolor);
+        fillRect(padXc,poY,((padX-sumX)>>1) + 1,cheight, textbgcolor);
         padXc = (padX-sumX)>>1;
         if (padXc>poX) padXc = poX;
-        fillRect(poX - padXc,poY,(padX-sumX)>>1,cheight, textbgcolor);
+        fillRect(poX - padXc + 1,poY,(padX-sumX)>>1,cheight, textbgcolor);
         break;
       case 3:
         if (padXc>padX) padXc = padX;
