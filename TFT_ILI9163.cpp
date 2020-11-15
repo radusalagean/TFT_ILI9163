@@ -753,6 +753,36 @@ void TFT_ILI9163::setTextPadding(uint16_t x_width)
 }
 
 /***************************************************************************************
+** Function name:           powerUp
+** Description:             Enter the Sleep Out State
+***************************************************************************************/
+void TFT_ILI9163::powerUp()
+{
+  spi_begin();
+  TFT_DC_C;
+  TFT_CS_L;
+  spiwrite(ILI9163_SLPOUT);
+  delay(1);
+  TFT_CS_H;
+  spi_end();
+}
+
+/***************************************************************************************
+** Function name:           powerDown
+** Description:             Enter the Sleep In State
+***************************************************************************************/
+void TFT_ILI9163::powerDown()
+{
+  spi_begin();
+  TFT_DC_C;
+  TFT_CS_L;
+  spiwrite(ILI9163_SLPIN);
+  delay(1);
+  TFT_CS_H;
+  spi_end();
+}
+
+/***************************************************************************************
 ** Function name:           getRotation
 ** Description:             Return the rotation value (as used by setRotation())
 ***************************************************************************************/

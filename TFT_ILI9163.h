@@ -103,6 +103,9 @@ tftswap(T& a, T& b) { T t = a; a = b; b = t; }
 
 // These are the ILI9163 control registers
 
+#define ILI9163_SLPIN   0x10
+#define ILI9163_SLPOUT  0x11
+
 #define ILI9163_INVOFF  0x20
 #define ILI9163_INVON   0x21
 #define ILI9163_CASET   0x2A
@@ -282,6 +285,9 @@ class TFT_ILI9163 : public Print {
            setTextWrap(boolean wrap),
            setTextDatum(uint8_t datum),
            setTextPadding(uint16_t x_width),
+
+           powerUp(),
+           powerDown(),
 
            spiwrite(uint8_t),
            writecommand(uint8_t c),
