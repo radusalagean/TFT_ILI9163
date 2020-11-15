@@ -2132,28 +2132,31 @@ void TFT_ILI9163::floatToString(float floatNumber, int dp, char* target, uint8_t
   // Put integer part into array
   ltoa(temp, str + ptr, 10);
 
-  // Find out where the null is to get the digit count loaded
-  while ((uint8_t)str[ptr] != 0) ptr++; // Move the pointer along
-  digits += ptr;                  // Count the digits
-
-  str[ptr++] = '.'; // Add decimal point
-  str[ptr] = '0';   // Add a dummy zero
-  str[ptr + 1] = 0; // Add a null but don't increment pointer so it can be overwritten
-
-  // Get the decimal portion
-  floatNumber = floatNumber - temp;
-
-  // Get decimal digits one by one and put in array
-  // Limit digit count so we don't get a false sense of resolution
-  uint8_t i = 0;
-  while ((i < dp) && (digits < 9)) // while (i < dp) for no limit but array size must be increased
+  if (dp > 0)
   {
-    i++;
-    floatNumber *= 10;       // for the next decimal
-    temp = floatNumber;      // get the decimal
-    ltoa(temp, str + ptr, 10);
-    ptr++; digits++;         // Increment pointer and digits count
-    floatNumber -= temp;     // Remove that digit
+    // Find out where the null is to get the digit count loaded
+    while ((uint8_t)str[ptr] != 0) ptr++; // Move the pointer along
+    digits += ptr;                  // Count the digits
+
+    str[ptr++] = '.'; // Add decimal point
+    str[ptr] = '0';   // Add a dummy zero
+    str[ptr + 1] = 0; // Add a null but don't increment pointer so it can be overwritten
+
+    // Get the decimal portion
+    floatNumber = floatNumber - temp;
+
+    // Get decimal digits one by one and put in array
+    // Limit digit count so we don't get a false sense of resolution
+    uint8_t i = 0;
+    while ((i < dp) && (digits < 9)) // while (i < dp) for no limit but array size must be increased
+    {
+      i++;
+      floatNumber *= 10;       // for the next decimal
+      temp = floatNumber;      // get the decimal
+      ltoa(temp, str + ptr, 10);
+      ptr++; digits++;         // Increment pointer and digits count
+      floatNumber -= temp;     // Remove that digit
+    }
   }
 
   strncpy(target, str, targetSize);
