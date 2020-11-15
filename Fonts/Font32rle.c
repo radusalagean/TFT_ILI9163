@@ -148,10 +148,10 @@ PROGMEM const unsigned char widtbl_f32[96] =         // character width table
 // 0x04, 0x81, 0x04, 0x80, 0x04, 0x81, 0x17
 // };
 
-// PROGMEM const unsigned char chr_f32_2D[] = 
-// {
-// 0x58, 0x85, 0x01, 0x85, 0x68
-// };
+PROGMEM const unsigned char chr_f32_2D[] = 
+{
+0x58, 0x85, 0x01, 0x85, 0x68
+};
 
 PROGMEM const unsigned char chr_f32_2E[] = 
 {
@@ -1034,7 +1034,7 @@ PROGMEM const unsigned char chr_f32_39[] =
 PROGMEM const unsigned char* const chrtbl_f32[96] =       // character pointer table
 {
         0, 0, 0, 0, 0, 0, 0, 0, 
-        0, 0, 0, 0, 0, 0, chr_f32_2E, 0, 
+        0, 0, 0, 0, 0, chr_f32_2D, chr_f32_2E, 0, 
         chr_f32_30, chr_f32_31, chr_f32_32, chr_f32_33, chr_f32_34, chr_f32_35, chr_f32_36, chr_f32_37, 
         chr_f32_38, chr_f32_39, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 
