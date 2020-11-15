@@ -1989,7 +1989,7 @@ int TFT_ILI9163::drawString(char *string, int poX, int poY, int font)
 
   while (*string) sumX += drawChar(*(string++), poX+sumX, poY, font);
 
-//#define PADDING_DEBUG
+// #define PADDING_DEBUG
 
 #ifndef PADDING_DEBUG
   if((padX>sumX) && (textcolor!=textbgcolor))
@@ -2094,12 +2094,10 @@ int TFT_ILI9163::drawNumber(long long_num, int poX, int poY, int font)
 }
 
 /***************************************************************************************
-** Function name:           drawFloat
-** Descriptions:            drawFloat, prints 7 non zero digits maximum
+** Function name:           floatToString
+** Descriptions:            formats the passed float and stores in the target
 ***************************************************************************************/
-// Adapted to assemble and print a string, this permits alignment relative to a datum
-// looks complicated but much more compact and actually faster than using print class
-int TFT_ILI9163::drawFloat(float floatNumber, int dp, int poX, int poY, int font)
+void TFT_ILI9163::floatToString(float floatNumber, int dp, char* target, uint8_t targetSize)
 {
   char str[14];               // Array to contain decimal string
   uint8_t ptr = 0;            // Initialise pointer for array
@@ -2124,7 +2122,7 @@ int TFT_ILI9163::drawFloat(float floatNumber, int dp, int poX, int poY, int font
   // For error put ... in string and return (all TFT_ILI9163 library fonts contain . character)
   if (floatNumber >= 2147483647) {
     strcpy(str, "...");
-    return drawString(str, poX, poY, font);
+    return str;
   }
   // No chance of overflow from here on
 
@@ -2157,8 +2155,21 @@ int TFT_ILI9163::drawFloat(float floatNumber, int dp, int poX, int poY, int font
     ptr++; digits++;         // Increment pointer and digits count
     floatNumber -= temp;     // Remove that digit
   }
-  
-  // Finally we can plot the string and return pixel length
+
+  strncpy(target, str, targetSize);
+}
+
+
+/***************************************************************************************
+** Function name:           drawFloat
+** Descriptions:            drawFloat, prints 7 non zero digits maximum
+***************************************************************************************/
+// Adapted to assemble and print a string, this permits alignment relative to a datum
+// looks complicated but much more compact and actually faster than using print class
+int TFT_ILI9163::drawFloat(float floatNumber, int dp, int poX, int poY, int font)
+{
+  char str[14];
+  floatToString(floatNumber, dp, str, 14);
   return drawString(str, poX, poY, font);
 }
 
@@ -2166,12 +2177,12 @@ int TFT_ILI9163::drawFloat(float floatNumber, int dp, int poX, int poY, int font
 ** Function name:           drawFloatWithDatum
 ** Descriptions:            draw float with custom datum
 ***************************************************************************************/
-int TFT_ILI9163::drawFloatWithDatum(float floatNumber, int decimal, int poX, int poY, int font, byte datum)
+int TFT_ILI9163::drawFloatWithDatum(float floatNumber, int dp, int poX, int poY, int font, byte datum)
 {
   byte tempdatum = textdatum;
   int sumX = 0;
   textdatum = datum;
-  sumX = drawFloat(floatNumber, decimal, poX, poY, font);
+  sumX = drawFloat(floatNumber, dp, poX, poY, font);
   textdatum = tempdatum;
   return sumX;
 }

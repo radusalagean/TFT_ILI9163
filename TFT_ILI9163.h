@@ -245,6 +245,8 @@ class TFT_ILI9163 : public Print {
            backupSPCR(void),
            restoreSPCR(void),
 
+           floatToString(float floatNumber, int dp, char* target, uint8_t targetSize),
+
            drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color),
            drawFastVLine(int16_t x, int16_t y, int16_t h, uint16_t color),
            drawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color),
@@ -293,8 +295,8 @@ class TFT_ILI9163 : public Print {
 
   int16_t  drawChar(unsigned int uniCode, int x, int y, int font),
            drawNumber(long long_num,int poX, int poY, int font),
-           drawFloat(float floatNumber,int decimal,int poX, int poY, int font),
-           drawFloatWithDatum(float floatNumber, int decimal, int poX, int poY, int font, byte datum),
+           drawFloat(float floatNumber,int dp,int poX, int poY, int font),
+           drawFloatWithDatum(float floatNumber, int dp, int poX, int poY, int font, byte datum),
 
            drawString(char *string, int poX, int poY, int font),
            drawCentreString(char *string, int dX, int poY, int font),
